@@ -2,9 +2,10 @@
   "name": "electron-quick-start",
   "version": "1.0.0",
   "description": "A minimal Electron application",
-  "main": "main.js",
+  "main": "./main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "ELECTRON_ENV=dev electron .",
+    "package": "electron-packager ./ F12306 --all --out ~/Desktop/F12306 --version 0.30.2 --overwrite --icon=./app/img/app-icon.icns"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,7 +18,8 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.7.8"
+    "electron": "~1.7.8",
+    "electron-packager": "^10.1.1"
   },
   "dependencies": {
     "bootstrap": "^3.3.7"
