@@ -8,6 +8,8 @@ const path = require('path')
 const url = require('url')
 
 const TrainListWindow = require('./app/js/windows/TrainListWindow')
+const menuTemplate = require('./app/js/menuTemplate')
+
 const { ipcMain, Menu } = require('electron')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -16,6 +18,7 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
+  Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate()) )
   trainListWindow = new TrainListWindow()
 
   // and load the index.html of the app.
@@ -26,9 +29,9 @@ function createWindow () {
   }))
 
   // Open the DevTools.
-  if (!app.isProduction()) {
-    mainWindow.webContents.openDevTools()
-  }
+  // if (!app.isProduction()) {
+  //   mainWindow.webContents.openDevTools()
+  // }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
@@ -65,10 +68,6 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 
 app.isProduction = () => process.env.ELECTRON_ENV !== 'dev'
-
-ipcMain.on('clear-info', () => {
-  console.log('clear info')
-})
 
 ipcMain.on('show-train-list-window', () => {
   trainListWindow.window.show()
