@@ -7,7 +7,8 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 
-const { ipcMain } = require('electron')
+const TrainListWindow = require('./app/js/windows/TrainListWindow')
+const { ipcMain, Menu } = require('electron')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -15,6 +16,7 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
+  trainListWindow = new TrainListWindow()
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -66,4 +68,8 @@ app.isProduction = () => process.env.ELECTRON_ENV !== 'dev'
 
 ipcMain.on('clear-info', () => {
   console.log('clear info')
+})
+
+ipcMain.on('show-train-list-window', () => {
+  trainListWindow.window.show()
 })

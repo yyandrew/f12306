@@ -7,3 +7,9 @@ console.log(clearInfoButton)
 clearInfoButton.addEventListener('click', () => {
   ipcRenderer.send('clear-info')
 })
+
+let showTrainListWindowButton = document.getElementById('show-tray-window')
+
+showTrainListWindowButton.addEventListener('click', () => {
+  ipcRenderer.send('show-train-list-window')
+})

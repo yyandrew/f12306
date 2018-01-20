@@ -18,8 +18,9 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "~1.7.8",
-    "electron-packager": "^10.1.1"
+    "electron": "^1.7.10",
+    "electron-packager": "^10.1.1",
+    "electron-positioner": "^3.0.0"
   },
   "dependencies": {
     "bootstrap": "^3.3.7"
