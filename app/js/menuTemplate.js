@@ -2,35 +2,29 @@ const electron = require('electron')
 
 const { app, shell, ipcMain } = electron
 
+const I18n = require('./I18n')
+
+const i18n = new I18n('zh-cn')
 let menuTemplate = function () {
   return [
     {
-      label: 'Application',
+      label: i18n.t('application'),
       submenu: [
         {
-          label: 'About App',
+          label: i18n.t('about_app'),
           click: () => {
             ipcMain.emit('show-train-list-window-event')
           }
         },
         {
-          label: 'Reload',
+          label: i18n.t('reload'),
           accelerator: 'CmdOrCtrl+R',
           click: (item, focusedWindow) => {
             focusedWindow.reload()
           }
         },
         {
-          label: 'Edit',
-          submenu: [
-            {
-              label: 'Undo',
-              accelerator: 'CmdOrCtrl+Z'
-            }
-          ]
-        },
-        {
-          label: 'Help',
+          label: i18n.t('help'),
           submenu: [
             {
               label: 'View Licence',
@@ -45,16 +39,16 @@ let menuTemplate = function () {
       ]
     },
     {
-      label: 'View',
+      label: i18n.t('view'),
       submenu: [
         {
-          label: '查询车次',
+          label: i18n.t('show_train_list'),
           click: () => {
-            ipcMain.send('show-train-search-window')
+            ipcMain.emit('show-train-search-window')
           }
         },
         {
-          label: 'Toggle debug tool',
+          label: i18n.t('toggle_debug_tool'),
           click: (item, focusedWindow) => {
             focusedWindow.webContents.toggleDevTools()
           }
