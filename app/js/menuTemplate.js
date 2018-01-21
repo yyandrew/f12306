@@ -48,6 +48,12 @@ let menuTemplate = function () {
       label: 'View',
       submenu: [
         {
+          label: '查询车次',
+          click: () => {
+            ipcMain.send('show-train-search-window')
+          }
+        },
+        {
           label: 'Toggle debug tool',
           click: (item, focusedWindow) => {
             focusedWindow.webContents.toggleDevTools()

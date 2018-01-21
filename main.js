@@ -9,6 +9,7 @@ const url = require('url')
 
 const TrainListWindow = require('./app/js/windows/TrainListWindow')
 const menuTemplate = require('./app/js/menuTemplate')
+const TrainList = require('./app/js/services/TrainList')
 
 const { ipcMain, Menu } = require('electron')
 // Keep a global reference of the window object, if you don't, the window will
@@ -19,7 +20,6 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
   Menu.setApplicationMenu( Menu.buildFromTemplate(menuTemplate()) )
-  trainListWindow = new TrainListWindow()
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -69,6 +69,7 @@ app.on('activate', function () {
 
 app.isProduction = () => process.env.ELECTRON_ENV !== 'dev'
 
-ipcMain.on('show-train-list-window', () => {
+ipcMain.on('show-train-search-window', () => {
+  trainListWindow = new TrainListWindow()
   trainListWindow.window.show()
 })

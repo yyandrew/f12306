@@ -6,6 +6,24 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
-    <h1>This is train list page</h1>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>
+            车次
+          </th>
+          <th>
+            出发时间  
+          </th>
+        </tr>
+      </thead>
+      <tbody id='train-list'>
+      </tbody>
+    </table>
+    <script>
+      const TrainList = require('../js/services/TrainList')
+      const trainList = new TrainList()
+      trainList.fetchTrainPromise()
+    </script>
   </body>
 </html>

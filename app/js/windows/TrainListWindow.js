@@ -11,8 +11,8 @@ class TrainListWindow {
 
     this.window = new BrowserWindow({
       show: false,
-      height: 210,
-      width: 225,
+      height: 400,
+      width: 800,
       frame: true,
       backgroundColor: '#E4ECEF',
       resizable: false
