@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style/index.css"
   </head>
   <body>
     <div class='container'>
       <h1>Login</h1>
+        <div class="for-group row">
+          <div class="col-sm-8">
+            <input type="hidden" name="captcha-value" id="captcha-values" class="form-control" value="" />
+          </div>
+        </div>
         <div class="for-group row">
           <label class="col-sm-2 col-form-label" for="username">Username:</label>
           <div class="col-sm-6">
